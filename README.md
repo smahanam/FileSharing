@@ -2,7 +2,7 @@
 
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py*  
   
-The s2s_run package can be called either from a Python program or run in standalone mode.
+The s2s_run package can be called either from within another Python program or run from the command line.
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
@@ -12,7 +12,7 @@ OR
 ```setenv PYTHONPATH {Your_LISFDIR}/lis/utils/usaf/S2S/```  
 
 ## 2) Creating working directories, and job files for the month
-| from a Python program | Standalone |
+| from a Python program | Command line |
 | -----------------------------------| -----------------------------------|
 | ```from s2s_run import S2Srun``` | load python |
 | ```# initialize S2Srun``` | ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst ```|
@@ -34,7 +34,8 @@ OR
 ## 3) Running s2s_run  
 | Cylc | SLURM |
 |------| ------|
-|Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*| ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```|
+|Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*|**Command line**| 
+||```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```|
 || This command will submit all generated job scripts (~50 \*.j files) to the SLURM system. The jobs will be executed according to their predefined workflow dependencies.| 
 || For example: *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/SLURM_JOB_SCHEDULE*|
 
