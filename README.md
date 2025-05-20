@@ -33,7 +33,7 @@ OR
 | Cylc | SLURM |
 |------| ------|
 |Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*| ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```|
-|| This command will submit all generated job scripts (~\*.j files) to the SLURM system. The jobs will be executed according to their predefined workflow dependencies.|   
+|| This command will submit all generated job scripts (~50 \*.j files) to the SLURM system. The jobs will be executed according to their predefined workflow dependencies.|   
 
 
 
