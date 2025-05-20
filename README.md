@@ -28,6 +28,11 @@ OR
 (3) This step will also generate the [runtime] snippet for Cylc implementation which defines directives, environmental variables, and the order of execution of job files. For e.g.:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
+## 3) Running s2s_run  
+| Cylc | SLURM |
+|------| ------|
+|Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*| ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```|
+
 
 
 
