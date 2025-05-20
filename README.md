@@ -18,14 +18,14 @@ OR
 |```# run S2Srun```||
 |```s2s.main()```||
 
-(1) This step will create 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots under the main run-directory (scratch/202501), for e.g.:  
+(1) This step will create 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots. These will be placed under the main run-directory (scratch/202501). For example:  
 *https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501*  
   
-(2) Each run-directory will be populated with two separate sets of job scripts for each task (~50 jobs per forecast).  
-\*.j files: are used on the SLURM job management system.    
-\*.sh files: do not contain any SLURM directives or commands, that are designed for Cylc.    
+(2) Each run-directory will be populated with two separate sets of job scripts for each task (approximately jobs per forecast).  
+\*.j files: These are used with the SLURM job management system.    
+\*.sh files: These contain NO SLURM directives or commands, and are designed for Cylc.    
   
-(3) This step will also write the [runtime] snippet for Cylc implementation defining directives, environmental variables, and the order of execution of job files. For e.g.:  
+(3) This step will also generate the [runtime] snippet for Cylc implementation which defines directives, environmental variables, and the order of execution of job files. For e.g.:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
 
