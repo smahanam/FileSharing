@@ -1,0 +1,1 @@
+/discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//lis_darun/lis_input.s2s_global.noahmp401_hymap2.25km.nc

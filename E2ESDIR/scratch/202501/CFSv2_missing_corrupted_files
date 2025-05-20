@@ -1,0 +1,26 @@
+ #####################################################################################
+                                  MISSING/INCOMPLETE CFSV2 FILES                      
+ #####################################################################################
+                         
+  A replacement file is required for each missing or corrupted file. CFSv2 replacement files are saved in:
+  /discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//bcsd_fcst/patch_files/, 
+  and comma-delimited lines in:  
+  /discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//bcsd_fcst/patch_files/patch_files_list.txt 
+  lists the replacement file names for each corrupted file. The table has three columns:  
+  YYYYMMDDHH, bad_file_name, replacement_file_name.     
+                         
+ (1) cd /discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//bcsd_fcst/patch_files/      
+ (2) Each problematic file name in the section below is followed by a list of wget commands to download a suitable replacement file in order of preference.
+     Download the first suggested replacement file and add a new entry to: 
+     /discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//bcsd_fcst/patch_files/patch_files_list.txt 
+ (3) Repeat the same procedure to download replacements and update: 
+     /discover/nobackup/projects/usaf_lis/GHI_S2S/supplementary_files//bcsd_fcst/patch_files/patch_files_list.txt 
+     for every missing/corrupted file.
+ (4) Relaunch the forecast: s2s_app/s2s_run.sh -y YEAR -m MONTH -c CONFIGFILE
+ (5) If any of the replacement files fail, you will be redirected to this file.
+     /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/CFSv2_missing_corrupted_files
+ (6) Repeat steps (2) and (3) using a different replacement file for the original bad file.
+                         
+**************************************************************
+ SUCCESS ! All CFSv2 forcings files passed the file check.
+**************************************************************
