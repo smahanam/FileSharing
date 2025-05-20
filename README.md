@@ -18,9 +18,12 @@ OR
 |```# run S2Srun```||
 |```s2s.main()```||
 
-This will create 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots under the main run-directory, for e.g.:  
+(1) This step will create 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots under the main run-directory (scratch/202501), for e.g.:  
 *https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501*
-
+(2) Each run-directory will be populated with two separate sets of job scripts for each task (~50 jobs per forecast). 
+\*.j files: are used on the SLURM job management system.  
+\*.sh files: do not contain any SLURM directives or commands, that are designed for Cylc.  
+(3) 
 
 
 
