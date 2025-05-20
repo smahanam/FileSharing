@@ -11,5 +11,8 @@ OR
 
 ## 2) Creating working directories, and job files for the month
 | from a Python program | Standalone |
-| ---------| -------|
-| from s2s_run import S2Srun | load python |
+| -----------------------------------| -----------------------------------|
+| ```from s2s_run import S2Srun``` | load python |
+| ```# initialize S2Srun``` | ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst ```|
+| ```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```| |
+
