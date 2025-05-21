@@ -28,7 +28,7 @@ OR
 \*.sh files: These contain NO SLURM directives or commands, and are designed for Cylc. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/s2spost/s2spost_01_run.sh*  
   
-(3) This step will also generate the [runtime] snippet for Cylc implementation which defines directives, environmental variables, and the order of execution of job files. For e.g.:  
+(3) This step will also generate the [runtime] snippet for Cylc implementation which defines directives, environmental variables, and the order of execution of job files. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
 ## 3) Running s2s_run  
