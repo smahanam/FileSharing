@@ -25,9 +25,9 @@ OR
 | from a Python program | Command line |
 | -----------------------------------| -----------------------------------|
 | ```from ghis2s.s2s_app.s2s_run import S2Srun``` | load python |
-| ```# initialize S2Srun``` | ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcast ```|
-| ```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```| |
-|```# run S2Srun```||
+| ```# initialize S2Srun``` |create a link from **E2ESDIR**|
+| ```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```|/bin/ln -s {LISFDIR}/lis/utils/usaf/S2S/ghis2s/s2s_app/ |
+|```# run S2Srun```|```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcast ```|
 |```s2s.main()```||
 
 (1) This step will create 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots. These will be placed under the main run-directory (scratch/202501). For example:  
