@@ -1,4 +1,4 @@
-# s2s_run Python Package 
+# ghis2s Python Package 
 
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py*  
   
