@@ -7,8 +7,7 @@ A comprehensive description of GHI-S2S can be found at:
   
 The master script of ghis2s ([*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)) creates run-directories, establishes necessary links, generates bash script files, and sets up the complete S2S forecast experiment each month.
 
-We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The package requires only one input: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:    
-related parameters/path is the only input to **ghis2s**, for example:
+We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The package requires only one input: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/s2s_config_global_fcast*
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
