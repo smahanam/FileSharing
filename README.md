@@ -2,7 +2,7 @@
 
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py*  
   
-The s2s_run package can be called either from within another Python program or run from the command line.
+The s2s_run package can be called either from within an external Python program or run from the command line.
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
