@@ -36,7 +36,7 @@ OR
 **(2) Bash job scripts:** Each run-directory will be populated with two separate sets of bash job scripts for each task (approximately 50 jobs per forecast). The distribution of jobs per each step is as follows:  
 lis_darun (1), ldt_ics (1), bcsd_fcst (15), lis_fcst (25), s2spost (2), s2smetric (3), and s2splots (3).  
 **\*.j files:** These are used with the SLURM job management system.    
-**\*.sh files:** These contain NO SLURM directives or commands, and are designed for Cylc. For example:  
+**\*.sh files:** These contain NO SLURM directives or commands, and are designed for **Cylc**. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/s2spost/s2spost_01_run.sh*  
   
 **(3) Cylc implementation:** This step will also generate the **[runtime]** snippet for **Cylc** implementation which defines directives, environmental variables, and the order of execution of job files. For example:  
