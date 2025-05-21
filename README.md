@@ -36,7 +36,13 @@ OR
 |------| ------|
 |Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*|**Command line**| 
 ||```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```  |
-test  
+||**from a Python program**|
+||```from s2s_run import S2Srun``` | 
+||```# initialize S2Srun``` |
+||```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```|
+||```# run S2Srun```|
+||```s2s.main()```|
+||```s2s.submit_slurm()|  
 || This command will submit all generated job scripts (~50 \*.j files) to the SLURM system. The jobs will be executed according to their predefined workflow dependencies.| 
 || For example: *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/SLURM_JOB_SCHEDULE*|
 
