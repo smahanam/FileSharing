@@ -45,7 +45,7 @@ lis_darun (1), ldt_ics (1), bcsd_fcst (15), lis_fcst (25), s2spost (2), s2smetri
 ## 3) Running s2s_run  
 | Cylc | SLURM |
 |------| ------|
-|Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*|**Command line**| 
+|Cylc will need to execute *sh files in the order as specified in [**CYLC_workflow.rc**](https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc)|**Command line**| 
 ||```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```  |
 ||**from a Python program**|
 ||```from ghis2s.s2s_app.s2s_run import S2Srun``` | 
