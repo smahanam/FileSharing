@@ -14,8 +14,8 @@ OR
 ## 2) Creating working directories, and job files for the month
 | from a Python program | Command line |
 | -----------------------------------| -----------------------------------|
-| ```from ghis2s.s2s_app import S2Srun``` | load python |
-| ```# initialize S2Srun``` | ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst ```|
+| ```from ghis2s.s2s_app.s2s_run import S2Srun``` | load python |
+| ```# initialize S2Srun``` | ```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcast ```|
 | ```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```| |
 |```# run S2Srun```||
 |```s2s.main()```||
@@ -37,9 +37,9 @@ OR
 |Cylc will need to execute *sh files in the order as specified in *CYLC_workflow.rc*|**Command line**| 
 ||```python s2s_app/s2s_run.py -y 2025 -m 1 -c s2s_config_global_fcst -j ```  |
 ||**from a Python program**|
-||```from ghis2s.s2s_app import S2Srun``` | 
+||```from ghis2s.s2s_app.s2s_run import S2Srun``` | 
 ||```# initialize S2Srun``` |
-||```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcst')```|
+||```s2s = S2Srun(year=2025, month=1, config_file='s2s_config_global_fcast')```|
 ||```# run S2Srun```|
 ||```s2s.main()```|
 ||```s2s.submit_jobs()```|  
