@@ -17,9 +17,9 @@ Below two paths are specified among SETUP parameters in the configuration file:
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
 ## 1) Setting PYTHONPATH environment variable
-```export PYTHONPATH=**LISFDIR**/lis/utils/usaf/S2S/```  
+```export PYTHONPATH={LISFDIR}/lis/utils/usaf/S2S/```  
 OR  
-```setenv PYTHONPATH **LISFDIR**/lis/utils/usaf/S2S/```  
+```setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/```  
 
 ## 2) Creating working directories, and job files for the month
 | from a Python program | Command line |
