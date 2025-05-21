@@ -1,16 +1,21 @@
 # ghis2s Python Package 
  
-GHI-S2S consists of approximately 150 tasks that follow a predeifined schedule. The tasks are grouped in to 50 job files in order to optimize computer resources.  
+This repository contains this README file and a mock up working directory of GHI-S2S forecast.
+GHI-S2S consists of approximately 150 tasks that follow a predeifined schedule. The tasks have been grouped into 50 job files in order to optimize computer resources.  
 A comprehensive description of GHI-S2S can be found at:  
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/README_GHI-S2S_LIS7.7*  
 The master script of ghis2s (*https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py*)  
-create run-directories, links, generate bash script files, and set up the S2S forecast experiment each month.
+creates run-directories, links, generate bash script files, etc and sets up the S2S forecast experiment each month.
 
-The ghis2s Python package can be called either from within an external Python program or run from the command line.
+We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. A YAML file containing system and experiment  
+related parameters/path is the only input to **ghis2s**, for example:
+*https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/s2s_config_global_fcast*
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
-## 1) Setting PYTHONPATH environment variable
+## 1) E2ESDIR
+E2ESDIR is the GHI-S2S working directory. 
+**Setting PYTHONPATH environment variable**
 ```export PYTHONPATH={Your_LISFDIR}/lis/utils/usaf/S2S/```  
 OR  
 ```setenv PYTHONPATH {Your_LISFDIR}/lis/utils/usaf/S2S/```  
