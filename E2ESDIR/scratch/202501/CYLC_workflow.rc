@@ -1,6 +1,6 @@
 [runtime]
     [[lisda_run]]
-        script = lis_darun/lisda_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_darun/lisda_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -18,7 +18,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_darun/lisda_%j.err
     [[ldtics_run]]
         inherit = lisda_run
-        script = ldt_ics/ldtics_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/ldt_ics/ldtics_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -39,7 +39,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_01_run]]
-        script = bcsd_fcst/bcsd01_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -60,7 +60,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_02_run]]
-        script = bcsd_fcst/bcsd01_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -81,7 +81,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_03_run]]
-        script = bcsd_fcst/bcsd01_03_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_03_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -102,7 +102,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_04_run]]
-        script = bcsd_fcst/bcsd01_04_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_04_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -123,7 +123,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_05_run]]
-        script = bcsd_fcst/bcsd01_05_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_05_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -144,7 +144,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd01_06_run]]
-        script = bcsd_fcst/bcsd01_06_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd01_06_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -165,7 +165,7 @@
         [[[environment]]]
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd03_run]]
-        script = bcsd_fcst/bcsd03_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd03_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -187,7 +187,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd04_01_run]]
         inherit = bcsd01_01_run,bcsd01_02_run,bcsd01_03_run,bcsd01_04_run,bcsd01_05_run,bcsd01_06_run,bcsd03_run
-        script = bcsd_fcst/bcsd04_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd04_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -209,7 +209,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd04_02_run]]
         inherit = bcsd01_01_run,bcsd01_02_run,bcsd01_03_run,bcsd01_04_run,bcsd01_05_run,bcsd01_06_run,bcsd03_run
-        script = bcsd_fcst/bcsd04_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd04_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -231,7 +231,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd05_01_run]]
         inherit = bcsd01_01_run,bcsd01_02_run,bcsd01_03_run,bcsd01_04_run,bcsd01_05_run,bcsd01_06_run,bcsd03_run
-        script = bcsd_fcst/bcsd05_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd05_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -253,7 +253,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd05_02_run]]
         inherit = bcsd01_01_run,bcsd01_02_run,bcsd01_03_run,bcsd01_04_run,bcsd01_05_run,bcsd01_06_run,bcsd03_run
-        script = bcsd_fcst/bcsd05_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd05_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -275,7 +275,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd06_run]]
         inherit = bcsd04_01_run,bcsd04_02_run,bcsd05_01_run,bcsd05_02_run
-        script = bcsd_fcst/bcsd06_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd06_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -297,7 +297,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd08_run]]
         inherit = bcsd06_run
-        script = bcsd_fcst/bcsd08_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd08_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -319,7 +319,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd09-10_run]]
         inherit = bcsd08_run
-        script = bcsd_fcst/bcsd09-10_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd09-10_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -341,7 +341,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[bcsd11-12_run]]
         inherit = bcsd09-10_run
-        script = bcsd_fcst/bcsd11-12_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/bcsd_fcst/bcsd11-12_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -363,7 +363,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[lis_fcst_CanESM5_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_CanESM5_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -381,7 +381,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_%j.err
     [[lis_fcst_CanESM5_01_run]]
         inherit = lis_fcst_CanESM5_00_run
-        script = lis_fcst/lis_fcst_CanESM5_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -399,7 +399,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_%j.err
     [[lis_fcst_CanESM5_02_run]]
         inherit = lis_fcst_CanESM5_01_run
-        script = lis_fcst/lis_fcst_CanESM5_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -417,7 +417,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_%j.err
     [[lis_fcst_CESM1_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_CESM1_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -435,7 +435,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_00_%j.err
     [[lis_fcst_CESM1_01_run]]
         inherit = lis_fcst_CESM1_00_run
-        script = lis_fcst/lis_fcst_CESM1_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -453,7 +453,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_01_%j.err
     [[lis_fcst_CESM1_02_run]]
         inherit = lis_fcst_CESM1_01_run
-        script = lis_fcst/lis_fcst_CESM1_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -471,7 +471,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_02_%j.err
     [[lis_fcst_CFSv2_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_CFSv2_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -489,7 +489,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_%j.err
     [[lis_fcst_CFSv2_01_run]]
         inherit = lis_fcst_CFSv2_00_run
-        script = lis_fcst/lis_fcst_CFSv2_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -507,7 +507,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_%j.err
     [[lis_fcst_CFSv2_02_run]]
         inherit = lis_fcst_CFSv2_01_run
-        script = lis_fcst/lis_fcst_CFSv2_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -525,7 +525,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_%j.err
     [[lis_fcst_CFSv2_03_run]]
         inherit = lis_fcst_CFSv2_02_run
-        script = lis_fcst/lis_fcst_CFSv2_03_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -543,7 +543,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_%j.err
     [[lis_fcst_CFSv2_04_run]]
         inherit = lis_fcst_CFSv2_03_run
-        script = lis_fcst/lis_fcst_CFSv2_04_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -561,7 +561,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_%j.err
     [[lis_fcst_GEOSv2_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_GEOSv2_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -579,7 +579,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_%j.err
     [[lis_fcst_GEOSv2_01_run]]
         inherit = lis_fcst_GEOSv2_00_run
-        script = lis_fcst/lis_fcst_GEOSv2_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -597,7 +597,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_%j.err
     [[lis_fcst_GFDL_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_GFDL_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -615,7 +615,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_00_%j.err
     [[lis_fcst_GFDL_01_run]]
         inherit = lis_fcst_GFDL_00_run
-        script = lis_fcst/lis_fcst_GFDL_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -633,7 +633,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_01_%j.err
     [[lis_fcst_GFDL_02_run]]
         inherit = lis_fcst_GFDL_01_run
-        script = lis_fcst/lis_fcst_GFDL_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -651,7 +651,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_02_%j.err
     [[lis_fcst_GFDL_03_run]]
         inherit = lis_fcst_GFDL_02_run
-        script = lis_fcst/lis_fcst_GFDL_03_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_03_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -669,7 +669,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_03_%j.err
     [[lis_fcst_GFDL_04_run]]
         inherit = lis_fcst_GFDL_03_run
-        script = lis_fcst/lis_fcst_GFDL_04_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_04_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -687,7 +687,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_04_%j.err
     [[lis_fcst_GFDL_05_run]]
         inherit = lis_fcst_GFDL_04_run
-        script = lis_fcst/lis_fcst_GFDL_05_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_05_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -705,7 +705,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_05_%j.err
     [[lis_fcst_GFDL_06_run]]
         inherit = lis_fcst_GFDL_05_run
-        script = lis_fcst/lis_fcst_GFDL_06_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_06_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -723,7 +723,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_06_%j.err
     [[lis_fcst_GFDL_07_run]]
         inherit = lis_fcst_GFDL_06_run
-        script = lis_fcst/lis_fcst_GFDL_07_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_07_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -741,7 +741,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_07_%j.err
     [[lis_fcst_GFDL_08_run]]
         inherit = lis_fcst_GFDL_07_run
-        script = lis_fcst/lis_fcst_GFDL_08_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_08_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -759,7 +759,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_08_%j.err
     [[lis_fcst_GNEMO52_00_run]]
         inherit = ldtics_run,bcsd11-12_run
-        script = lis_fcst/lis_fcst_GNEMO52_00_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -777,7 +777,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_%j.err
     [[lis_fcst_GNEMO52_01_run]]
         inherit = lis_fcst_GNEMO52_00_run
-        script = lis_fcst/lis_fcst_GNEMO52_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -795,7 +795,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_%j.err
     [[lis_fcst_GNEMO52_02_run]]
         inherit = lis_fcst_GNEMO52_01_run
-        script = lis_fcst/lis_fcst_GNEMO52_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -813,7 +813,7 @@
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_%j.err
     [[s2spost_01_run]]
         inherit = lis_fcst_CanESM5_02_run,lis_fcst_CESM1_02_run,lis_fcst_CFSv2_04_run,lis_fcst_GEOSv2_01_run,lis_fcst_GFDL_08_run,lis_fcst_GNEMO52_02_run
-        script = s2spost/s2spost_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2spost/s2spost_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -835,7 +835,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[s2spost_02_run]]
         inherit = lis_fcst_CanESM5_02_run,lis_fcst_CESM1_02_run,lis_fcst_CFSv2_04_run,lis_fcst_GEOSv2_01_run,lis_fcst_GFDL_08_run,lis_fcst_GNEMO52_02_run
-        script = s2spost/s2spost_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2spost/s2spost_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -857,7 +857,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[s2smetric_run]]
         inherit = s2spost_01_run,s2spost_02_run
-        script = s2smetric/s2smetric_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2smetric/s2smetric_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -879,7 +879,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[s2smetric_weekly_run]]
         inherit = s2spost_01_run,s2spost_02_run
-        script = s2smetric/s2smetric_weekly_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2smetric/s2smetric_weekly_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -903,7 +903,7 @@
             NUM_WORKERS=5
     [[s2smetric_tiff_run]]
         inherit = s2smetric_run,s2smetric_weekly_run
-        script = s2smetric/s2smetric_tiff_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2smetric/s2smetric_tiff_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -925,7 +925,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[s2splots_01_run]]
         inherit = s2smetric_tiff_run
-        script = s2splots/s2splots_01_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2splots/s2splots_01_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -947,7 +947,7 @@
             PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
     [[s2splots_02_run]]
         inherit = s2smetric_tiff_run
-        script = s2splots/s2splots_02_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2splots/s2splots_02_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
@@ -971,7 +971,7 @@
             NUM_WORKERS=14
     [[s2splots_03_run]]
         inherit = s2smetric_tiff_run
-        script = s2splots/s2splots_03_run.sh
+        script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2splots/s2splots_03_run.sh
         pre-script = 
                      source /etc/profile.d/modules.sh
                      module purge
