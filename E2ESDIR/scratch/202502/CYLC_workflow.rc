@@ -1,3 +1,50 @@
+[scheduling]
+[[dependencies]]
+    [[[T00]]] # validity (hours)
+        graph = """
+            lisda_run => ldtics_run
+            bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_01_run
+            bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_02_run
+            bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_01_run
+            bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_02_run
+            bcsd04_01_run & bcsd04_02_run & bcsd05_01_run & bcsd05_02_run => bcsd06_run
+            bcsd06_run => bcsd08_run
+            bcsd08_run => bcsd09-10_run
+            bcsd09-10_run => bcsd11-12_run
+            ldtics_run & bcsd11-12_run => lis_fcst_CanESM5_00_run
+            lis_fcst_CanESM5_00_run => lis_fcst_CanESM5_01_run
+            lis_fcst_CanESM5_01_run => lis_fcst_CanESM5_02_run
+            ldtics_run & bcsd11-12_run => lis_fcst_CESM1_00_run
+            lis_fcst_CESM1_00_run => lis_fcst_CESM1_01_run
+            lis_fcst_CESM1_01_run => lis_fcst_CESM1_02_run
+            ldtics_run & bcsd11-12_run => lis_fcst_CFSv2_00_run
+            lis_fcst_CFSv2_00_run => lis_fcst_CFSv2_01_run
+            lis_fcst_CFSv2_01_run => lis_fcst_CFSv2_02_run
+            lis_fcst_CFSv2_02_run => lis_fcst_CFSv2_03_run
+            lis_fcst_CFSv2_03_run => lis_fcst_CFSv2_04_run
+            ldtics_run & bcsd11-12_run => lis_fcst_GEOSv2_00_run
+            lis_fcst_GEOSv2_00_run => lis_fcst_GEOSv2_01_run
+            ldtics_run & bcsd11-12_run => lis_fcst_GFDL_00_run
+            lis_fcst_GFDL_00_run => lis_fcst_GFDL_01_run
+            lis_fcst_GFDL_01_run => lis_fcst_GFDL_02_run
+            lis_fcst_GFDL_02_run => lis_fcst_GFDL_03_run
+            lis_fcst_GFDL_03_run => lis_fcst_GFDL_04_run
+            lis_fcst_GFDL_04_run => lis_fcst_GFDL_05_run
+            lis_fcst_GFDL_05_run => lis_fcst_GFDL_06_run
+            lis_fcst_GFDL_06_run => lis_fcst_GFDL_07_run
+            lis_fcst_GFDL_07_run => lis_fcst_GFDL_08_run
+            ldtics_run & bcsd11-12_run => lis_fcst_GNEMO52_00_run
+            lis_fcst_GNEMO52_00_run => lis_fcst_GNEMO52_01_run
+            lis_fcst_GNEMO52_01_run => lis_fcst_GNEMO52_02_run
+            lis_fcst_CanESM5_02_run & lis_fcst_CESM1_02_run & lis_fcst_CFSv2_04_run & lis_fcst_GEOSv2_01_run & lis_fcst_GFDL_08_run & lis_fcst_GNEMO52_02_run => s2spost_01_run
+            lis_fcst_CanESM5_02_run & lis_fcst_CESM1_02_run & lis_fcst_CFSv2_04_run & lis_fcst_GEOSv2_01_run & lis_fcst_GFDL_08_run & lis_fcst_GNEMO52_02_run => s2spost_02_run
+            s2spost_01_run & s2spost_02_run => s2smetric_run
+            s2spost_01_run & s2spost_02_run => s2smetric_weekly_run
+            s2smetric_run & s2smetric_weekly_run => s2smetric_tiff_run
+            s2smetric_tiff_run => s2splots_01_run
+            s2smetric_tiff_run => s2splots_02_run
+            s2smetric_tiff_run => s2splots_03_run
+        """
 [runtime]
     [[lisda_run]]
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202502/lis_darun/lisda_run.sh
