@@ -40,7 +40,7 @@ lis_darun: 1; ldt_ics: 1; bcsd_fcst: 15; lis_fcst: 25; s2spost: 2; s2smetric: 3;
 **\*.sh files:** These contain NO SLURM directives or commands, and are designed for **Cylc**. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/s2spost/s2spost_01_run.sh*  
   
-**(3) Cylc implementation:** This step will also generate the **[runtime]** snippet for **Cylc** implementation which defines directives, environmental variables, and the order of execution of job files. For example:  
+**(3) Cylc implementation:** This step will also generate the **[scheduling][[dependencies]] and [runtime]** snippet for **Cylc** implementation which defines directives, environmental variables, and the order of execution of job files. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
 ## 3) Running s2s_run  
