@@ -23,9 +23,9 @@ module use --append /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1//en
 module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
 ulimit -s unlimited
 
-cd /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202502/lis_darun
 export I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
 export I_MPI_PMI_VALUE_LENGTH_MAX=288
+cd /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202502/lis_darun
 srun --mpi=pmi2 --ntasks=$SLURM_NTASKS \
      --ntasks-per-socket=$SLURM_NTASKS_PER_SOCKET \
      --ntasks-per-core=$SLURM_NTASKS_PER_CORE \

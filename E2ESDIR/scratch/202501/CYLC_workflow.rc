@@ -63,6 +63,9 @@
             --job-name=lisda_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_darun/lisda_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_darun/lisda_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[ldtics_run]]
         inherit = lisda_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/ldt_ics/ldtics_run.sh
@@ -426,6 +429,9 @@
             --job-name=lis_fcst_CanESM5_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CanESM5_01_run]]
         inherit = lis_fcst_CanESM5_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_run.sh
@@ -444,6 +450,9 @@
             --job-name=lis_fcst_CanESM5_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CanESM5_02_run]]
         inherit = lis_fcst_CanESM5_01_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_run.sh
@@ -462,6 +471,9 @@
             --job-name=lis_fcst_CanESM5_02_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CESM1_00_run]]
         inherit = ldtics_run,bcsd11-12_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_00_run.sh
@@ -480,6 +492,9 @@
             --job-name=lis_fcst_CESM1_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CESM1_01_run]]
         inherit = lis_fcst_CESM1_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_01_run.sh
@@ -498,6 +513,9 @@
             --job-name=lis_fcst_CESM1_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CESM1_02_run]]
         inherit = lis_fcst_CESM1_01_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_02_run.sh
@@ -516,6 +534,9 @@
             --job-name=lis_fcst_CESM1_02_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_02_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CESM1_02_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CFSv2_00_run]]
         inherit = ldtics_run,bcsd11-12_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_run.sh
@@ -534,6 +555,9 @@
             --job-name=lis_fcst_CFSv2_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CFSv2_01_run]]
         inherit = lis_fcst_CFSv2_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_run.sh
@@ -552,6 +576,9 @@
             --job-name=lis_fcst_CFSv2_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CFSv2_02_run]]
         inherit = lis_fcst_CFSv2_01_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_run.sh
@@ -570,6 +597,9 @@
             --job-name=lis_fcst_CFSv2_02_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CFSv2_03_run]]
         inherit = lis_fcst_CFSv2_02_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_run.sh
@@ -588,6 +618,9 @@
             --job-name=lis_fcst_CFSv2_03_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_CFSv2_04_run]]
         inherit = lis_fcst_CFSv2_03_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_run.sh
@@ -606,6 +639,9 @@
             --job-name=lis_fcst_CFSv2_04_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GEOSv2_00_run]]
         inherit = ldtics_run,bcsd11-12_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_run.sh
@@ -624,6 +660,9 @@
             --job-name=lis_fcst_GEOSv2_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GEOSv2_01_run]]
         inherit = lis_fcst_GEOSv2_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_run.sh
@@ -642,6 +681,9 @@
             --job-name=lis_fcst_GEOSv2_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_00_run]]
         inherit = ldtics_run,bcsd11-12_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_00_run.sh
@@ -660,6 +702,9 @@
             --job-name=lis_fcst_GFDL_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_01_run]]
         inherit = lis_fcst_GFDL_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_01_run.sh
@@ -678,6 +723,9 @@
             --job-name=lis_fcst_GFDL_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_02_run]]
         inherit = lis_fcst_GFDL_01_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_02_run.sh
@@ -696,6 +744,9 @@
             --job-name=lis_fcst_GFDL_02_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_02_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_02_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_03_run]]
         inherit = lis_fcst_GFDL_02_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_03_run.sh
@@ -714,6 +765,9 @@
             --job-name=lis_fcst_GFDL_03_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_03_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_03_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_04_run]]
         inherit = lis_fcst_GFDL_03_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_04_run.sh
@@ -732,6 +786,9 @@
             --job-name=lis_fcst_GFDL_04_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_04_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_04_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_05_run]]
         inherit = lis_fcst_GFDL_04_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_05_run.sh
@@ -750,6 +807,9 @@
             --job-name=lis_fcst_GFDL_05_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_05_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_05_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_06_run]]
         inherit = lis_fcst_GFDL_05_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_06_run.sh
@@ -768,6 +828,9 @@
             --job-name=lis_fcst_GFDL_06_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_06_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_06_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_07_run]]
         inherit = lis_fcst_GFDL_06_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_07_run.sh
@@ -786,6 +849,9 @@
             --job-name=lis_fcst_GFDL_07_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_07_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_07_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GFDL_08_run]]
         inherit = lis_fcst_GFDL_07_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_08_run.sh
@@ -804,6 +870,9 @@
             --job-name=lis_fcst_GFDL_08_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_08_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GFDL_08_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GNEMO52_00_run]]
         inherit = ldtics_run,bcsd11-12_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_run.sh
@@ -822,6 +891,9 @@
             --job-name=lis_fcst_GNEMO52_00_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GNEMO52_01_run]]
         inherit = lis_fcst_GNEMO52_00_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_run.sh
@@ -840,6 +912,9 @@
             --job-name=lis_fcst_GNEMO52_01_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[lis_fcst_GNEMO52_02_run]]
         inherit = lis_fcst_GNEMO52_01_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_run.sh
@@ -858,6 +933,9 @@
             --job-name=lis_fcst_GNEMO52_02_
             --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_%j.out
             --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_%j.err
+        [[[environment]]]
+            I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+            I_MPI_PMI_VALUE_LENGTH_MAX=288
     [[s2spost_01_run]]
         inherit = lis_fcst_CanESM5_02_run,lis_fcst_CESM1_02_run,lis_fcst_CFSv2_04_run,lis_fcst_GEOSv2_01_run,lis_fcst_GFDL_08_run,lis_fcst_GNEMO52_02_run
         script = /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2spost/s2spost_01_run.sh
