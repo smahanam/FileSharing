@@ -1,0 +1,824 @@
+#!jinja2
+# S2S Forecast Workflow
+  
+[meta]
+    title = S2S Forecast Workflow
+    description = S2S Forecast Initialized on 2025-01
+  
+[cylc]
+    UTC mode = True
+    cycle point format = %Y-%m-%dT%H
+  
+[scheduling]
+    initial cycle point = 2025-01-01T00
+    max active cycle points = 1
+  
+    [[dependencies]]
+        [[[R1]]] # validity (hours)
+            graph = """
+                lisda_run => ldtics_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_01_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_02_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_03_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_04_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_05_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_06_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd04_07_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_01_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_02_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_03_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_04_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_05_run
+                bcsd01_01_run & bcsd01_02_run & bcsd01_03_run & bcsd01_04_run & bcsd01_05_run & bcsd01_06_run & bcsd03_run => bcsd05_06_run
+                bcsd04_01_run & bcsd04_02_run & bcsd04_03_run & bcsd04_04_run & bcsd04_05_run & bcsd04_06_run & bcsd04_07_run & bcsd05_01_run & bcsd05_02_run & bcsd05_03_run & bcsd05_04_run & bcsd05_05_run & bcsd05_06_run => bcsd06_01_run
+                bcsd04_01_run & bcsd04_02_run & bcsd04_03_run & bcsd04_04_run & bcsd04_05_run & bcsd04_06_run & bcsd04_07_run & bcsd05_01_run & bcsd05_02_run & bcsd05_03_run & bcsd05_04_run & bcsd05_05_run & bcsd05_06_run => bcsd06_02_run
+                bcsd06_01_run & bcsd06_02_run => bcsd08_01_run
+                bcsd06_01_run & bcsd06_02_run => bcsd08_02_run
+                bcsd06_01_run & bcsd06_02_run => bcsd08_03_run
+                bcsd08_01_run & bcsd08_02_run & bcsd08_03_run => bcsd09-10_run
+                bcsd09-10_run => bcsd11-12_run
+                ldtics_run & bcsd11-12_run => lis_fcst_CanESM5_00_run
+                lis_fcst_CanESM5_00_run => lis_fcst_CanESM5_01_run
+                lis_fcst_CanESM5_01_run => lis_fcst_CanESM5_02_run
+                ldtics_run & bcsd11-12_run => lis_fcst_CESM1_00_run
+                lis_fcst_CESM1_00_run => lis_fcst_CESM1_01_run
+                lis_fcst_CESM1_01_run => lis_fcst_CESM1_02_run
+                ldtics_run & bcsd11-12_run => lis_fcst_CFSv2_00_run
+                lis_fcst_CFSv2_00_run => lis_fcst_CFSv2_01_run
+                lis_fcst_CFSv2_01_run => lis_fcst_CFSv2_02_run
+                lis_fcst_CFSv2_02_run => lis_fcst_CFSv2_03_run
+                lis_fcst_CFSv2_03_run => lis_fcst_CFSv2_04_run
+                ldtics_run & bcsd11-12_run => lis_fcst_GEOSv2_00_run
+                lis_fcst_GEOSv2_00_run => lis_fcst_GEOSv2_01_run
+                ldtics_run & bcsd11-12_run => lis_fcst_GFDL_00_run
+                lis_fcst_GFDL_00_run => lis_fcst_GFDL_01_run
+                lis_fcst_GFDL_01_run => lis_fcst_GFDL_02_run
+                lis_fcst_GFDL_02_run => lis_fcst_GFDL_03_run
+                lis_fcst_GFDL_03_run => lis_fcst_GFDL_04_run
+                lis_fcst_GFDL_04_run => lis_fcst_GFDL_05_run
+                lis_fcst_GFDL_05_run => lis_fcst_GFDL_06_run
+                lis_fcst_GFDL_06_run => lis_fcst_GFDL_07_run
+                lis_fcst_GFDL_07_run => lis_fcst_GFDL_08_run
+                ldtics_run & bcsd11-12_run => lis_fcst_GNEMO52_00_run
+                lis_fcst_GNEMO52_00_run => lis_fcst_GNEMO52_01_run
+                lis_fcst_GNEMO52_01_run => lis_fcst_GNEMO52_02_run
+                lis_fcst_CanESM5_02_run & lis_fcst_CESM1_02_run & lis_fcst_CFSv2_04_run & lis_fcst_GEOSv2_01_run & lis_fcst_GFDL_08_run & lis_fcst_GNEMO52_02_run => s2spost_01_run
+                lis_fcst_CanESM5_02_run & lis_fcst_CESM1_02_run & lis_fcst_CFSv2_04_run & lis_fcst_GEOSv2_01_run & lis_fcst_GFDL_08_run & lis_fcst_GNEMO52_02_run => s2spost_02_run
+                s2spost_01_run & s2spost_02_run => s2smetric_run
+                s2spost_01_run & s2spost_02_run => s2smetric_weekly_run
+                s2smetric_run & s2smetric_weekly_run => s2smetric_tiff_run
+                s2smetric_tiff_run => s2splots_01_run
+                s2smetric_tiff_run => s2splots_02_run
+                s2smetric_tiff_run => s2splots_03_run
+            """
+[runtime]
+    [[root]]
+        # Default settings for all tasks
+        [[[job]]]
+            batch system = slurm
+        [[[environment]]]
+            datetime = $CYLC_TASK_CYCLE_POINT
+            config = $CYLC_SUITE_DEF_PATH/config.yml
+            inputdata = $CYLC_SUITE_DEF_PATH/inputdata.yml
+            INSTALL_PATH = $CYLC_SUITE_DEF_PATH
+        [[[events]]]
+            mail to = sarith.p.mahanama@nasa.gov
+            mail events = failed
+  
+    [[lisda_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_darun/lisda_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=300
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lisda_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_darun/lisda_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_darun/lisda_%j.err
+    [[ldtics_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/ldt_ics/ldtics_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=1
+            --time=120
+            --constraint=mil
+            --mem-per-cpu=40GB
+            --partition=packable
+            --job-name=ldtics_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/ldt_ics/ldtics_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/ldt_ics/ldtics_%j.err
+    [[bcsd01_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_01_%j.err
+    [[bcsd01_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_02_%j.err
+    [[bcsd01_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_03_%j.err
+    [[bcsd01_04_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_04_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_04_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_04_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_04_%j.err
+    [[bcsd01_05_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_05_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_05_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_05_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_05_%j.err
+    [[bcsd01_06_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_06_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=18
+            --time=60
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=13GB
+            --cpus-per-task=1
+            --job-name=bcsd01_06_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_06_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd01_06_%j.err
+    [[bcsd03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=6
+            --time=180
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=80GB
+            --job-name=bcsd03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd03_%j.err
+    [[bcsd04_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_01_%j.err
+    [[bcsd04_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_02_%j.err
+    [[bcsd04_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_03_%j.err
+    [[bcsd04_04_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_04_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_04_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_04_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_04_%j.err
+    [[bcsd04_05_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_05_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_05_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_05_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_05_%j.err
+    [[bcsd04_06_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_06_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_06_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_06_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_06_%j.err
+    [[bcsd04_07_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_07_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd04_07_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_07_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd04_07_%j.err
+    [[bcsd05_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_01_%j.err
+    [[bcsd05_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_02_%j.err
+    [[bcsd05_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_03_%j.err
+    [[bcsd05_04_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_04_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_04_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_04_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_04_%j.err
+    [[bcsd05_05_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_05_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_05_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_05_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_05_%j.err
+    [[bcsd05_06_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_06_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=1
+            --time=240
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=10
+            --job-name=bcsd05_06_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_06_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd05_06_%j.err
+    [[bcsd06_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=3
+            --time=300
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=12
+            --job-name=bcsd06_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_01_%j.err
+    [[bcsd06_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks=2
+            --time=300
+            --constraint=mil
+            --mem=240GB
+            --cpus-per-task=12
+            --job-name=bcsd06_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd06_02_%j.err
+    [[bcsd08_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=2
+            --time=300
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=100GB
+            --job-name=bcsd08_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_01_%j.err
+    [[bcsd08_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=2
+            --time=300
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=100GB
+            --job-name=bcsd08_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_02_%j.err
+    [[bcsd08_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=2
+            --time=300
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=100GB
+            --job-name=bcsd08_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd08_03_%j.err
+    [[bcsd09-10_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd09-10_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=7
+            --time=360
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=69GB
+            --job-name=bcsd09-10_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd09-10_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd09-10_%j.err
+    [[bcsd11-12_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd11-12_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=2
+            --time=360
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=100GB
+            --job-name=bcsd11-12_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd11-12_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/bcsd_fcst/bcsd11-12_%j.err
+    [[lis_fcst_CanESM5_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CanESM5_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_00_%j.err
+    [[lis_fcst_CanESM5_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CanESM5_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_01_%j.err
+    [[lis_fcst_CanESM5_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CanESM5_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CanESM5_02_%j.err
+    [[lis_fcst_CESM1_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CESM1_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_00_%j.err
+    [[lis_fcst_CESM1_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CESM1_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_01_%j.err
+    [[lis_fcst_CESM1_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CESM1_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CESM1_02_%j.err
+    [[lis_fcst_CFSv2_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CFSv2_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_00_%j.err
+    [[lis_fcst_CFSv2_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CFSv2_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_01_%j.err
+    [[lis_fcst_CFSv2_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CFSv2_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_02_%j.err
+    [[lis_fcst_CFSv2_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CFSv2_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_03_%j.err
+    [[lis_fcst_CFSv2_04_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_CFSv2_04_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_CFSv2_04_%j.err
+    [[lis_fcst_GEOSv2_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GEOSv2_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_00_%j.err
+    [[lis_fcst_GEOSv2_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GEOSv2_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GEOSv2_01_%j.err
+    [[lis_fcst_GFDL_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_00_%j.err
+    [[lis_fcst_GFDL_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_01_%j.err
+    [[lis_fcst_GFDL_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_02_%j.err
+    [[lis_fcst_GFDL_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_03_%j.err
+    [[lis_fcst_GFDL_04_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_04_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_04_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_04_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_04_%j.err
+    [[lis_fcst_GFDL_05_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_05_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_05_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_05_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_05_%j.err
+    [[lis_fcst_GFDL_06_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_06_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_06_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_06_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_06_%j.err
+    [[lis_fcst_GFDL_07_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_07_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_07_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_07_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_07_%j.err
+    [[lis_fcst_GFDL_08_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_08_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GFDL_08_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_08_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GFDL_08_%j.err
+    [[lis_fcst_GNEMO52_00_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GNEMO52_00_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_00_%j.err
+    [[lis_fcst_GNEMO52_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GNEMO52_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_01_%j.err
+    [[lis_fcst_GNEMO52_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --time=420
+            --constraint=mil
+            --ntasks=288 --ntasks-per-socket=48 --ntasks-per-core=1
+            --job-name=lis_fcst_GNEMO52_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/lis_fcst/lis_fcst_GNEMO52_02_%j.err
+    [[s2spost_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=27
+            --time=240
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=18GB
+            --job-name=s2spost_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_01_%j.err
+    [[s2spost_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=27
+            --time=240
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=18GB
+            --job-name=s2spost_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2spost/s2spost_02_%j.err
+    [[s2smetric_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=12
+            --time=240
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=40GB
+            --job-name=s2smetric_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_%j.err
+    [[s2smetric_weekly_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_weekly_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=12
+            --time=240
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=8GB
+            --cpus-per-task=5
+            --job-name=s2smetric_weekly_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_weekly_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_weekly_%j.err
+    [[s2smetric_tiff_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_tiff_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=1
+            --time=180
+            --constraint=mil
+            --mem-per-cpu=40GB
+            --partition=packable
+            --job-name=s2smetric_tiff_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_tiff_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2smetric/s2smetric_tiff_%j.err
+    [[s2splots_01_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_01_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=4
+            --time=120
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=100GB
+            --job-name=s2splots_01_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_01_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_01_%j.err
+    [[s2splots_02_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_02_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=1
+            --time=120
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=10GB
+            --cpus-per-task=14
+            --job-name=s2splots_02_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_02_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_02_%j.err
+    [[s2splots_03_run]]
+        script = /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_03_run.sh
+        [[[directives]]]
+            --account=s1189
+            --nodes=1
+            --ntasks-per-node=1
+            --time=120
+            --constraint=mil
+            --partition=packable
+            --mem-per-cpu=10GB
+            --cpus-per-task=5
+            --job-name=s2splots_03_
+            --output=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_03_%j.out
+            --error=/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/s2splots/s2splots_03_%j.err

@@ -1,0 +1,6 @@
+2025-06-26T16:57:37-04:00 INFO - Symlink created: /home/smahanam/cylc-run/S2S/run1 -> /discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/scratch/202501/cylc-run/S2S/run1
+2025-06-26T16:57:37-04:00 INFO - Copying files from /gpfsm/dhome/smahanam/cylc8-workflows/S2S to /home/smahanam/cylc-run/S2S/run1
+    send ./
+    send flow.cylc
+2025-06-26T16:57:37-04:00 INFO - Creating symlink from /home/smahanam/cylc-run/S2S/_cylc-install/source
+2025-06-26T16:57:37-04:00 INFO - INSTALLED S2S/run1 from /gpfsm/dhome/smahanam/cylc8-workflows/S2S
