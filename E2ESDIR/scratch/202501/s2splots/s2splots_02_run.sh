@@ -1,43 +1,27 @@
 #!/bin/bash
 
-# Run tasks in parallel
-PIDS=()
-python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_s2smetrics.py -y 2025 -m 01 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
-PIDS+=($!)
+#######################################################################
+#                        Batch Parameters 
+#######################################################################
 
-# Set runtime
-START_TIME=$(date +%s)
-TIME_LIMIT_SECONDS=$((2 * 60 * 60))  
 
-while true; do
-sleep 60
-CURRENT_TIME=$(date +%s)
-ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+#######################################################################
+#                  Run LISF S2S s2splots_02_
+#######################################################################
 
-if [ $ELAPSED_TIME -ge $TIME_LIMIT_SECONDS ]; then
-    echo "[ERROR] Job exceeded time limit ($TIME_LIMIT). Killing processes..."
-    for PID in "${PIDS[@]}"; do
-        kill $PID 2>/dev/null
-        sleep 2
-        kill -9 $PID 2>/dev/null
-    done
-exit 1
-fi
+source /etc/profile.d/modules.sh
+module purge
+module use -a /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1//env/discover/
+module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
+ulimit -s unlimited
 
-ALL_DONE=true
-for PID in "${PIDS[@]}"; do
-    if kill -0 $PID 2>/dev/null; then
-        ALL_DONE=false
-        break
-    fi
-done
+export PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
+export NUM_WORKERS=14
+cd /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2splots
+srun --exclusive --cpus-per-task=14 --ntasks 1 python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_s2smetrics.py -y 2025 -m 01 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
+wait
 
-if $ALL_DONE; then
-    break
-fi
-done
-        echo [INFO] Completed s2splots_02_run.sh ! 
+echo "[INFO] Completed s2splots_02_!"
 
 /usr/bin/touch DONE
 exit 0
-        

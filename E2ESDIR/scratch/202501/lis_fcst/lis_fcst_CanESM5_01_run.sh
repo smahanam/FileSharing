@@ -1,43 +1,31 @@
 #!/bin/bash
 
-# Run tasks in parallel
-PIDS=()
-mpirun -np 288 --map-by socket:PE=48 --bind-to none ./LIS -f input/lis.config_files/CanESM5/lis.config.s2sglobal.noahmp401.hymap2.da_ics_forecast_CanESM5_202501_01 &
-PIDS+=($!)
+#######################################################################
+#                        Batch Parameters 
+#######################################################################
 
-# Set runtime
-START_TIME=$(date +%s)
-TIME_LIMIT_SECONDS=$((7 * 60 * 60))  
 
-while true; do
-sleep 60
-CURRENT_TIME=$(date +%s)
-ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
+#######################################################################
+#                  Run LISF S2S lis_fcst_CanESM5_01_
+#######################################################################
 
-if [ $ELAPSED_TIME -ge $TIME_LIMIT_SECONDS ]; then
-    echo "[ERROR] Job exceeded time limit ($TIME_LIMIT). Killing processes..."
-    for PID in "${PIDS[@]}"; do
-        kill $PID 2>/dev/null
-        sleep 2
-        kill -9 $PID 2>/dev/null
-    done
-exit 1
-fi
+source /etc/profile.d/modules.sh
+module purge
+unset LD_LIBRARY_PATH
+module use --append /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1//env/discover/
+module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
+ulimit -s unlimited
 
-ALL_DONE=true
-for PID in "${PIDS[@]}"; do
-    if kill -0 $PID 2>/dev/null; then
-        ALL_DONE=false
-        break
-    fi
-done
+export I_MPI_PMI_LIBRARY=/usr/slurm/lib64/libpmi2.so
+export I_MPI_PMI_VALUE_LENGTH_MAX=288
+cd /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/lis_fcst
+srun --mpi=pmi2 --ntasks=$SLURM_NTASKS \
+     --ntasks-per-socket=$SLURM_NTASKS_PER_SOCKET \
+     --ntasks-per-core=$SLURM_NTASKS_PER_CORE \
+     --cpu-bind="none"  \
+     ./LIS -f input/lis.config_files/CanESM5/lis.config.s2sglobal.noahmp401.hymap2.da_ics_forecast_CanESM5_202501_01 || exit 1
 
-if $ALL_DONE; then
-    break
-fi
-done
-        echo [INFO] Completed lis_fcst_CanESM5_01_run.sh ! 
+echo "[INFO] Completed lis_fcst_CanESM5_01_!"
 
 /usr/bin/touch DONE
 exit 0
-        

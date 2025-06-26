@@ -1,52 +1,29 @@
 #!/bin/bash
 
-# Run tasks in parallel
-PIDS=()
-python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_mena.py -y 2025 -m 01 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
-PIDS+=($!)
+#######################################################################
+#                        Batch Parameters 
+#######################################################################
 
-python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_anom_verify.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast -l 1 &
-PIDS+=($!)
 
-python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_anom_verify.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast -l 2 &
-PIDS+=($!)
+#######################################################################
+#                  Run LISF S2S s2splots_01_
+#######################################################################
 
-python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_weekly_anom.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
-PIDS+=($!)
+source /etc/profile.d/modules.sh
+module purge
+module use -a /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1//env/discover/
+module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
+ulimit -s unlimited
 
-# Set runtime
-START_TIME=$(date +%s)
-TIME_LIMIT_SECONDS=$((2 * 60 * 60))  
+export PYTHONPATH=/discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S/
+cd /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2splots
+srun --exclusive --ntasks 1 python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_mena.py -y 2025 -m 01 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
+srun --exclusive --ntasks 1 python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_anom_verify.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast -l 1 &
+srun --exclusive --ntasks 1 python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_anom_verify.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast -l 2 &
+srun --exclusive --ntasks 1 python /discover/nobackup/projects/usaf_lis/smahanam/S2S/LISF-1/lis/utils/usaf/S2S//ghis2s/s2splots/plot_weekly_anom.py -y 2025 -m 1 -w /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/ -c /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/s2s_config_global_fcast &
+wait
 
-while true; do
-sleep 60
-CURRENT_TIME=$(date +%s)
-ELAPSED_TIME=$((CURRENT_TIME - START_TIME))
-
-if [ $ELAPSED_TIME -ge $TIME_LIMIT_SECONDS ]; then
-    echo "[ERROR] Job exceeded time limit ($TIME_LIMIT). Killing processes..."
-    for PID in "${PIDS[@]}"; do
-        kill $PID 2>/dev/null
-        sleep 2
-        kill -9 $PID 2>/dev/null
-    done
-exit 1
-fi
-
-ALL_DONE=true
-for PID in "${PIDS[@]}"; do
-    if kill -0 $PID 2>/dev/null; then
-        ALL_DONE=false
-        break
-    fi
-done
-
-if $ALL_DONE; then
-    break
-fi
-done
-        echo [INFO] Completed s2splots_01_run.sh ! 
+echo "[INFO] Completed s2splots_01_!"
 
 /usr/bin/touch DONE
 exit 0
-        

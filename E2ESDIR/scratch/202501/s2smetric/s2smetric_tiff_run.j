@@ -9,8 +9,8 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=3:00:00
 #SBATCH --constraint=mil
-#SBATCH --partition=packable
 #SBATCH --mem-per-cpu=40GB
+#SBATCH --partition=packable
 #SBATCH --job-name=s2smetric_tiff_
 #SBATCH --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2smetric/s2smetric_tiff_%j.out
 #SBATCH --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/s2smetric/s2smetric_tiff_%j.err

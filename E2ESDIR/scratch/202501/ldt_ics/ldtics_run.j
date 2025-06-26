@@ -9,8 +9,8 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --time=2:00:00
 #SBATCH --constraint=mil
-#SBATCH --partition=packable
 #SBATCH --mem-per-cpu=40GB
+#SBATCH --partition=packable
 #SBATCH --job-name=ldtics_
 #SBATCH --output /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/ldt_ics/ldtics_%j.out
 #SBATCH --error /discover/nobackup/projects/ghilis/S2S/GLOBAL/FileSharing/E2ESDIR/scratch/202501/ldt_ics/ldtics_%j.err
