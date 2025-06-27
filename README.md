@@ -1,7 +1,7 @@
 # ghis2s Python Package 
  
 This repository contains this README file and a mock-up working directory of the GHI-S2S forecasting system.
-GHI-S2S consists of approximately 150 tasks that follow a predeifined schedule. These tasks have been grouped into 50 job files to optimize computer resources.  
+GHI-S2S consists of approximately 150 tasks that follow a predeifined schedule. These tasks have been grouped into 50+ job files to optimize computer resources.  
 A comprehensive description of GHI-S2S can be found at:  
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/README_GHI-S2S_LIS7.7*  
   
@@ -13,6 +13,8 @@ We present **ghis2s** as a Python package that can be called either from within 
 Below two paths are specified among SETUP parameters in the configuration file:  
 **E2ESDIR:** The GHI-S2S working directory that must contain the above configuration file.  
 **LISFDIR:** The path to LISF installation. 
+
+The **ghis2s** package provides a Python script to import ghis2s and run monthly forecasts ([*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py)).  
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
