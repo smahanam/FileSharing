@@ -14,14 +14,47 @@ Below two paths are specified among SETUP parameters in the configuration file:
 **E2ESDIR:** The GHI-S2S working directory that must contain the above configuration file.  
 **LISFDIR:** The path to LISF installation. 
 
-The **ghis2s** package provides a Python script to import ghis2s and run monthly forecasts ([*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py)). The user is free to copy run_s2s_fcast.py to the working directory and copy as deem appropriate.  
+The **ghis2s** package provides a Python script, [*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py) , for importing **ghis2s** and executing monthly forecasts. Users are welcome to copy **run_s2s_fcast.py** into their working directories and modify it as needed.  
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
-## 1) Setting PYTHONPATH environment variable
-```export PYTHONPATH={LISFDIR}/lis/utils/usaf/S2S/```  
+## 1) Setting up the Forecast Experiment
+### a) Check E2ESDIR Directory
+i) Ensure **E2ESDIR** and **LISFDIR** in the s2s_config_global_fcast configuration file are correct.  
+ii) Ensure **hindcast** directory and the land initial conditions are available and linked.
+
+### b) Set up working directory
+i) Copy **run_s2s_fcast.py** to your working directory directory and edit *E2ESDIR* as needed.  
+ii) Load the LISF Python module and set the ENVIRONMENT variable PYTHONPATH
+```
+on Discover e.g.
+module use -a {LISFDIR}/env/discover/
+module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
+     
+export PYTHONPATH={LISFDIR}/lis/utils/usaf/S2S/```  
 OR  
-```setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/```  
+setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/
+```
+### c) Test the script
+To display options, run:
+``` python run_s2s_fcast.py -h ```
+This will print:
+```
+usage: s2s_monthly.py [-h] -c CONFIG_FILE -y YEAR -m MONTH -e EMAIL [-s STEP] [-o] [-j]
+
+options:
+  -h, --help            show this help message and exit
+  -c CONFIG_FILE, --config_file CONFIG_FILE
+                        config file
+  -y YEAR, --year YEAR  forecast year
+  -m MONTH, --month MONTH
+                        forecast month
+  -e EMAIL, --email EMAIL
+                        user email
+  -s STEP, --step STEP  S2S step: LISDA, LDTICS, BCSD, FCST, POST, METRICS or PLOTS
+  -o, --one_step        Is only one step (default: False)?
+  -j, --submit_job      Submit SLURM jobs (default: False -> CYLC)?
+```  
 
 ## 2) Creating working directories, and job files for the month
 | from a Python program | Command line |
