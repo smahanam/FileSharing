@@ -31,7 +31,7 @@ on Discover e.g.
 module use -a {LISFDIR}/env/discover/
 module --ignore-cache load lisf_7.5_intel_2023.2.1_s2s
      
-export PYTHONPATH={LISFDIR}/lis/utils/usaf/S2S/```  
+export PYTHONPATH={LISFDIR}/lis/utils/usaf/S2S/  
 OR  
 setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/
 ```
