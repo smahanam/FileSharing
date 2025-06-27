@@ -14,7 +14,7 @@ Below two paths are specified among SETUP parameters in the configuration file:
 **E2ESDIR:** The GHI-S2S working directory that must contain the above configuration file.  
 **LISFDIR:** The path to LISF installation. 
 
-The **ghis2s** package provides a Python script to import ghis2s and run monthly forecasts ([*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py)).  
+The **ghis2s** package provides a Python script to import ghis2s and run monthly forecasts ([*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py)). The user is free to copy run_s2s_fcast.py to the working directory and copy as deem appropriate.  
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
