@@ -127,6 +127,9 @@ Optionally, this command will submit all generated job scripts (~50 \*.j files) 
 For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/SLURM_JOB_SCHEDULE*
 
+## 4) Notes  
+**i) **
+
 
 
 
