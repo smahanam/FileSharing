@@ -128,7 +128,35 @@ For example:
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/SLURM_JOB_SCHEDULE*
 
 ## 4) Notes  
-**i) **
+
+**i) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
+Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW} accordingly.  
+  
+**ii) Can the same flow.cylc file be reused each month?**  
+No. As stated above, monthly differences in input files and configurations require that **run_s2s_fcast.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
+  
+**iii) Why is [[dependencies]] → [[[R1]]] necessary?**  
+Launching an operational S2S forecast requires human oversight each month due to the following reasons:  
+a) CFSv2 data latency is typically a few days  
+b) NMME precipitation data can be delayed by 8–10 days  
+c) Occasionally, a particular NMME model may be unavailable  
+d) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast  
+
+Hence, users must manually verify that all meteorological forcings are available and then initiate the forecast.  
+  
+**iv) Is ghis2s's Cylc implementation 100% system-agnostic?**  
+Yes and no.  
+  
+While the shell scripts (*.sh) avoid hardcoded SLURM directives, certain tasks benefit significantly from using SLURM’s srun for resource allocation. For example, Python tasks that use multiprocessing perform better when invoked as:  
+```srun --exclusive --cpus-per-task=5 --ntasks 1 python script.py```  
+
+This approach has been more effective than using Cylc’s native mechanisms in such cases.  
+That said, ghis2s includes a feature to generate fully system-agnostic shell scripts (i.e., no SLURM usage), although this feature is currently disabled for performance reasons.
+An example of a SLURM-free shell script can be found here:   
+*https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*
+
+
+
 
 
 
