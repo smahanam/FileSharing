@@ -102,7 +102,7 @@ python run_s2s_fcast.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL
 ```
 
 In addition to creating monthly forecast-specific directories, links, and files, the command above also customizes and installs **Cylc-related** files and directories for the specified forecast month.  
-**run_s2s_fcast.py** uses the WORKFLOW_NAME variable to name and organize these **Cylc-specific** resources, which include:  
+**run_s2s_fcast.py** uses the WORKFLOW_NAME (e.g. **S2S-202501**) variable to name and organize these **Cylc-specific** resources, which include:  
 
 i) A {WORKFLOW_NAME} directory under the user’s working directory (where run_s2s_fcast.py is executed).  
 ii) A customized **Cylc flow.cylc** file containing the user’s email address, placed inside the {WORKFLOW_NAME} directory.  
