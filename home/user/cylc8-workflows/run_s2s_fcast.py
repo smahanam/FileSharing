@@ -4,7 +4,11 @@ import shutil
 import subprocess
 import argparse
 from ghis2s.s2s_app.s2s_run import S2Srun
- 
+
+E2ESDIR = '/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/'
+WORKFLOW_NAME = 'S2S'
+CYLCHOME = os.getcwd()
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-c', '--config_file', required=True, type=str, help='config file')
 parser.add_argument('-y', '--year', required=True, type=int, help='forecast year')
