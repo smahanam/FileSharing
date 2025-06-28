@@ -6,7 +6,6 @@ import argparse
 from ghis2s.s2s_app.s2s_run import S2Srun
 
 E2ESDIR = '/discover/nobackup/projects/ghilis/smahanam/E2E_Cylc/'
-WORKFLOW_NAME = 'S2S'
 CYLCHOME = os.getcwd()
 
 parser = argparse.ArgumentParser()
@@ -77,6 +76,7 @@ if  args.submit_job:
 
 # Return to CYLCHOME
 # ------------------
+WORKFLOW_NAME = f'S2S-{args.year:04d}{args.month:02d}'
 os.chdir(CYLCHOME)
 os.makedirs(WORKFLOW_NAME, exist_ok=True)
 os.chdir(WORKFLOW_NAME)
