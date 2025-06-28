@@ -154,7 +154,7 @@ While the shell scripts (*.sh) avoid hardcoded SLURM directives, certain tasks b
 This approach has been more effective than using Cylc’s native mechanisms in such cases.  
 That said, ghis2s includes a feature to generate fully system-agnostic shell scripts (i.e., no SLURM usage), although this feature is currently disabled for performance reasons.
 An example of a SLURM-free shell script can be found here:   
-*https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*
+*https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*  
 
 
 
