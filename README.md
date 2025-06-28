@@ -107,7 +107,7 @@ In addition to creating monthly forecast-specific directories, links, and files,
 i) A {WORKFLOW_NAME} directory under the user’s working directory (where run_s2s_fcast.py is executed).  
 ii) A customized **Cylc flow.cylc** file containing the user’s email address, placed inside the {WORKFLOW_NAME} directory.  
 iii) A **Cylc log/run** directory under the forecast month’s run directory (e.g., **scratch/202501**). Example:    
-*https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501/cylc-run/S2S/run1*
+*https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501/cylc-run/S2S-202501/run1*
 
 Useful **Cylc** commands to run, monitor, inspect, and stop the workflow:    
 ```
@@ -130,7 +130,7 @@ For example:
 ## 4) Notes  
 
 **i) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
-Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW} accordingly.  
+Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW_NAME} accordingly.  
   
 **ii) Can the same flow.cylc file be reused each month?**  
 No. As stated above, monthly differences in input files and configurations require that **run_s2s_fcast.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
@@ -143,6 +143,7 @@ c) Occasionally, a particular NMME model may be unavailable
 d) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast  
 
 Hence, users must manually verify that all meteorological forcings are available and then initiate the forecast.  
+{WORKFLOW_NAME} is run just once for the duration specified by parameter "lead_time" (in months) in s2s_config_global_fcast file.  
   
 **iv) Is ghis2s's Cylc implementation 100% system-agnostic?**  
 Yes and no.  
