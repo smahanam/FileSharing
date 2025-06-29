@@ -130,12 +130,15 @@ For example:
 ## 4) Notes  
 
 **i) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
+  
 Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW_NAME} accordingly.  
   
 **ii) Can the same flow.cylc file be reused each month?**  
+  
 No. As stated above, monthly differences in input files and configurations require that **run_s2s_fcast.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
   
 **iii) Why is [[dependencies]] → [[[R1]]] necessary?**  
+  
 Launching an operational S2S forecast requires human oversight each month due to the following reasons:  
 a) CFSv2 data latency is typically a few days  
 b) NMME precipitation data can be delayed by 8–10 days  
@@ -147,6 +150,7 @@ The {WORKFLOW_NAME} workflow runs only once, covering the duration specified by 
 Note that the **ghis2s Cylc** implementation does **NOT** utilize Cylc’s built-in trigger, clock, or timer features to manage the workflow.  
   
 **iv) Is ghis2s's Cylc implementation 100% system-agnostic?**  
+  
 Yes and no.  
   
 While the shell scripts (*.sh) avoid hardcoded SLURM directives, certain tasks benefit significantly from using SLURM’s srun for resource allocation. For example, Python tasks that use multiprocessing perform better when invoked as:  
@@ -157,6 +161,11 @@ That said, ghis2s includes a feature to generate fully system-agnostic shell scr
 An example of a SLURM-free shell script can be found here:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*  
 
+**v) How does ghis2s differ from other GHI subsystems (GHI-NRT, GHI-MR)?**  
+  
+Although the GHI-S2S workflow includes over 150 tasks and is more complex than other subsystems, the **ghis2s software tool, [*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)**, simplifies execution by consolidating all tasks into a single command driven by a unified configuration file.  
+It automates the execution of all tasks based on their dependencies, effectively eliminating the need for manual intervention.
+  
 
 
 
