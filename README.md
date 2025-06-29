@@ -141,9 +141,10 @@ a) CFSv2 data latency is typically a few days
 b) NMME precipitation data can be delayed by 8–10 days  
 c) Occasionally, a particular NMME model may be unavailable  
 d) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast  
-
-Hence, users must manually verify that all meteorological forcings are available and then initiate the forecast.  
-{WORKFLOW_NAME} is run just once for the duration specified by parameter "lead_time" (in months) in s2s_config_global_fcast file.  
+  
+Therefore, users must manually verify the availability of all required meteorological forcings before initiating the forecast.  
+The {WORKFLOW_NAME} workflow runs only once, covering the duration specified by the lead_time parameter (in months) in the s2s_config_global_fcast file.  
+Note that the **ghis2s Cylc** implementation does **NOT** utilize Cylc’s built-in trigger, clock, or timer features to manage the workflow.  
   
 **iv) Is ghis2s's Cylc implementation 100% system-agnostic?**  
 Yes and no.  
