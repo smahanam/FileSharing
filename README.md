@@ -163,7 +163,7 @@ An example of a SLURM-free shell script can be found here:
 
 **v) How does ghis2s differ from other GHI subsystems (GHI-NRT, GHI-MR)?**  
   
-Although the GHI-S2S workflow includes over 150 tasks and is more complex than other subsystems, the **ghis2s software tool, [*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)**, simplifies execution by consolidating all tasks into a single command driven by a unified configuration file.  
+Although the GHI-S2S workflow includes over 150 tasks and is more complex than other subsystems, **the master script of the ghis2s software tool, [*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)**, simplifies execution by consolidating all tasks into a single command driven by a unified configuration file.  
 It automates the execution of all tasks based on their dependencies, effectively eliminating the need for manual intervention.
   
 
