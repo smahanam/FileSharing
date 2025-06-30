@@ -26,7 +26,7 @@ ii) Ensure **hindcast** directory and the land initial conditions are available 
 ### b) Set up Working directory
 
 i) **Cylc** creates the /home/$USER/cylc-run directory during the monthly forecast intallation. Therefore, /home/$USER/cylc-run  is *NOT* a recommended name for the user's working directory.  
-ii) Copy **run_s2s_fcast.py** to your working directory and edit *E2ESDIR* variable to specify user's E2ESDIR.  
+ii) Copy **run_s2s_fcast.py** to your working directory and edit *E2ESDIR* parameter to specify user's E2ESDIR.  
 iii) Load the LISF Python module and set the ENVIRONMENT variable PYTHONPATH  
   
 ```
@@ -127,7 +127,7 @@ Optionally, this command will submit all generated job scripts (~50 \*.j files) 
 For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/SLURM_JOB_SCHEDULE*
 
-## 4) Notes  
+## 4) Operational Notes and Cylc Design Rationale  
 
 **i) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
   
