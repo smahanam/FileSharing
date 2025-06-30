@@ -143,7 +143,7 @@ No. As stated above, monthly differences in input files and configurations requi
   
 Launching an operational S2S forecast requires human oversight each month due to the following reasons:  
 i) CFSv2 data latency is typically a few days  
-ii) NMME precipitation data are delivered by the 8th to 8–10th day of each month    
+ii) NMME precipitation data are delivered by the 8 to 10th day of each month    
 iii) Occasionally, a particular NMME model may be unavailable  
 iv) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast.  
   
