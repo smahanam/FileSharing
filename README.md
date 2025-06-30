@@ -7,14 +7,14 @@ A comprehensive description of GHI-S2S can be found at:
   
 The master script of ghis2s ([*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)) creates run-directories, establishes necessary links, generates bash script files, and sets up the complete S2S forecast experiment each month.
 
-We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The package requires only one input: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:   
+We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The **ghis2s** package provides a Python script, [*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py) , for importing **ghis2s** and executing monthly forecasts. Users are welcome to copy **run_s2s_fcast.py** into their working directories and modify it as needed.  
+
+The package requires only one input: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/s2s_config_global_fcast*  
   
 Below two paths are specified among SETUP parameters in the configuration file:  
 **E2ESDIR:** The GHI-S2S forecast directory where the S2S forecast resides that must contain the above configuration file.  
 **LISFDIR:** The path to LISF installation. 
-
-The **ghis2s** package provides a Python script, [*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py) , for importing **ghis2s** and executing monthly forecasts. Users are welcome to copy **run_s2s_fcast.py** into their working directories and modify it as needed.  
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
