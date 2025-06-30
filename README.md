@@ -153,11 +153,11 @@ Note that the **ghis2s Cylc** implementation does **NOT** utilize Cylc’s built
   
 Yes and no.  
   
-While the shell scripts (*.sh) avoid hardcoded SLURM directives, certain tasks benefit significantly from using SLURM’s srun for resource allocation. For example, Python tasks that use multiprocessing perform better when invoked as:  
+While the shell scripts (*.sh) avoid hardcoded SLURM directives, certain tasks benefit significantly from using SLURM’s **srun** for resource allocation. For example, Python tasks that use multiprocessing perform better when invoked as:  
 ```srun --exclusive --cpus-per-task=5 --ntasks 1 python script.py```  
 
 This approach has been more effective than using Cylc’s native mechanisms in such cases.  
-That said, ghis2s includes a feature to generate fully system-agnostic shell scripts (i.e., no SLURM usage), although this feature is currently disabled for performance reasons.
+That said, ghis2s includes a feature to generate fully system-agnostic shell scripts (i.e., no **srun**), although this feature is currently disabled for performance reasons.
 An example of a SLURM-free shell script can be found here:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*  
 
