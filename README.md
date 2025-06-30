@@ -1,7 +1,7 @@
 # ghis2s Python Package 
  
-This repository contains this README file and a mock-up working directory (**E2ESDIR**) of the GHI-S2S forecasting system.
-GHI-S2S consists of approximately 150 tasks that follow a predeifined schedule. These tasks have been grouped into 50+ job files to optimize computer resources.  
+This repository contains this README file and a mock-up working directory (**"E2ESDIR"**) of the GHI-S2S forecasting system.
+GHI-S2S consists of approximately 150 tasks that follow a predefined schedule. These tasks have been grouped into 50+ job files to optimize computer resources.  
 A comprehensive description of GHI-S2S can be found at:  
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/README_GHI-S2S_LIS7.7*  
   
@@ -12,20 +12,20 @@ We present **ghis2s** as a Python package that can be called either from within 
 The package requires only one input: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/s2s_config_global_fcast*  
   
-Below two paths are specified among SETUP parameters in the configuration file:  
+Below, the two paths are specified among SETUP parameters in the configuration file:  
 **E2ESDIR:** The GHI-S2S forecast directory where the S2S forecast resides that must contain the above configuration file.  
 **LISFDIR:** The path to LISF installation. 
 
 *The following description uses the S2S forecast initialized on January 1, 2025 as an example.*  
   
-## 1) Setting up the Forecast Experiment
-### a) Check E2ESDIR Directory
+## 1) Setting up the Forecast Run Directory
+### a) Check the main E2ESDIR Directory
 i) Ensure **E2ESDIR** and **LISFDIR** in the s2s_config_global_fcast configuration file are correct.  
-ii) Ensure **hindcast** directory and the land initial conditions are available and linked.
+ii) Ensure the **hindcast** directory and the land initial conditions ("lis_darun/output model restart files) are available and linked.
 
-### b) Set up Working directory
+### b) Set up the Working directory and install the Cylc Workflow
 
-i) **Cylc** creates the /home/$USER/cylc-run directory during the monthly forecast intallation. Therefore, /home/$USER/cylc-run  is *NOT* a recommended name for the user's working directory.  
+i) **Cylc** creates the /home/$USER/cylc-run directory during the monthly forecast installation. Therefore, /home/$USER/cylc-run  is *NOT* a recommended name for the user's working directory.  
 ii) Copy **run_s2s_fcast.py** to your working directory and edit *E2ESDIR* parameter to specify user's E2ESDIR.  
 iii) Load the LISF Python module and set the ENVIRONMENT variable PYTHONPATH  
   
@@ -39,7 +39,7 @@ OR
 setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/
 ```
 ### c) Test the Script
-To display options, run:
+To display options, run the help option:
 ``` python run_s2s_fcast.py -h ```
 This will print:
 ```
@@ -68,15 +68,17 @@ Run the following command to initialize the forecast environment:
 
 This command performs the following:
 
-**(1) Directories and links:**   
-This step will create the main run-directory of the month **(scratch/202501)**, and 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots under the main run-directory. For example:  
+**(1) Create the directories and links:**   
+This step will create the main **"scratch"** run-directory of the target initial forecast month **(scratch/202501)**, and 7 run-directories for the seven steps: lis_darun, ldt_ics, bcsd_fcst, lis_fcst, s2spost, s2smetric, and s2splots under the main **"scratch"** run-directory. For example:  
 *https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501*  
   
 **Note:** The temporary **scratch** directory was introduced to store miscellaneous files, including standard *.err and *.out logs, in a location that can be safely deleted. This helps keep the main E2ESDIR and forecast output directories clean and organized.
   
 **(2) Bash job scripts:**   
 Each run-directory will be populated with two separate sets of bash job scripts for each task (approximately 50 jobs per forecast). The distribution of jobs per each step is as follows:  
-lis_darun: 1; ldt_ics: 1; bcsd_fcst: 15; lis_fcst: 25; s2spost: 2; s2smetric: 3; and s2splots: 3.  
+lis_darun: 1; ldt_ics: 1; bcsd_fcst: 15; lis_fcst: 25; s2spost: 2; s2smetric: 3; and s2splots: 3.
+
+The two different job scripts that are created for each S2S task are:
   
 **\*.j files:** These are used with the SLURM job management system.    
 **\*.sh files:** These contain NO SLURM directives, and are designed for **Cylc**. For example:  
@@ -85,7 +87,7 @@ lis_darun: 1; ldt_ics: 1; bcsd_fcst: 15; lis_fcst: 25; s2spost: 2; s2smetric: 3;
 **(3) Cylc implementation:** This step will also generate the **CYLC_workflow.rc** file for **Cylc** implementation which defines directives, environmental variables, task dependencies, and the order of execution of job files. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
-### Optional Features
+### Optional Features for run_s2s_fcast.py:
 **i) -s STEP**  
 The STEP option allows the user to resume the process from the last completed step of the seven E2ES steps.  
 -s STEP directs **run_s2s_fcast.py** to start from a specific STEP (valid inputs: LISDA, LDTICS, BCSD, FCST, POST, METRICS or PLOTS).  
@@ -129,27 +131,27 @@ For example:
 
 ## 4) Operational Notes and Cylc Design Rationale  
 
-**i) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
+**a) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
   
 Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW_NAME} accordingly.  
   
-**ii) Can the same flow.cylc file be reused each month?**  
+**b) Can the same flow.cylc file be reused each month?**  
   
 No. As stated above, monthly differences in input files and configurations require that **run_s2s_fcast.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
   
-**iii) Why is [[dependencies]] → [[[R1]]] necessary?**  
+**c) Why is [[dependencies]] → [[[R1]]] necessary?**  
   
 Launching an operational S2S forecast requires human oversight each month due to the following reasons:  
-a) CFSv2 data latency is typically a few days  
-b) NMME precipitation data can be delayed by 8–10 days  
-c) Occasionally, a particular NMME model may be unavailable  
-d) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast  
+i) CFSv2 data latency is typically a few days  
+ii) NMME precipitation data are delivered by the 8th to 8–10th day of each month    
+iii) Occasionally, a particular NMME model may be unavailable  
+iv) **ghis2s** performs checks for CFSv2 and NMME file availability before launching the forecast.  
   
 Therefore, users must manually verify the availability of all required meteorological forcings before initiating the forecast.  
 The {WORKFLOW_NAME} workflow runs only once, covering the duration specified by the lead_time parameter (in months) in the s2s_config_global_fcast file.  
 Note that the **ghis2s Cylc** implementation does **NOT** utilize Cylc’s built-in trigger, clock, or timer features to manage the workflow.  
   
-**iv) Is ghis2s's Cylc implementation 100% system-agnostic?**  
+**d) Is ghis2s's Cylc implementation 100% system-agnostic?**  
   
 Yes and no.  
   
@@ -161,10 +163,10 @@ That said, ghis2s includes a feature to generate fully system-agnostic shell scr
 An example of a **SLURM's srun-free** shell script can be found here:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202502/s2splots/s2splots_01_run.sh*  
 
-**v) How does ghis2s differ from other GHI subsystems (GHI-NRT, GHI-MR)?**  
+**e) How does ghis2s differ from other GHI subsystems (GHI-NRT, GHI-MR)?**  
   
 Although the GHI-S2S workflow includes over 150 tasks and is more complex than other subsystems, **the master script of the ghis2s software tool, [*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)**, simplifies execution by consolidating all tasks into a single command driven by a unified configuration file.  
-It automates the execution of all tasks based on their dependencies, effectively eliminating the need for manual intervention.
+The script automates the execution of all tasks based on their dependencies, effectively eliminating the need for manual intervention.
   
 
 
