@@ -39,6 +39,10 @@ OR
 setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/
 ```
 ### c) Test the Script
+The **run_s2s_fcast.py** script imports the **“S2Srun”** class from the **“s2s_run”** module in the **“ghis2s”** package, and instantiates as **s2s**.
+The **s2s** instance has the following methods: s2s.main() [end-to-end 7-steps]; s2s.lis_darun(); s2s.ldt_ics(); s2s.bcsd(); s2s.lis_fcst(); s2s.s2spost(); s2s.s2smetric(); s2s.s2splots()
+s2s.write_cylc_snippet() [writes CYLC_workflow.rc in scratch/YYYYMM]; and s2s.submit_jobs()  [submits to the SLURM queue].
+   
 To display options, run the help option:
 ``` python run_s2s_fcast.py -h ```
 This will print:
