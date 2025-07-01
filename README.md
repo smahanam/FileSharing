@@ -1,6 +1,6 @@
 # ghis2s Python Package 
  
-This repository contains this README file and a mock-up working directory (**"E2ESDIR"**) of the GHI-S2S forecasting system.
+This repository contains this README file and a mock-up forecast directory (**"E2ESDIR"**) of the GHI-S2S forecasting system.
 GHI-S2S consists of approximately 150 tasks that follow a predefined schedule. These tasks have been grouped into 50+ job files to optimize computer resources.  
 A comprehensive description of GHI-S2S can be found at:  
 *https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/README_GHI-S2S_LIS7.7*  
@@ -61,7 +61,7 @@ options:
 Note: CONFIG_FILE, YEAR, MONTH and EMAIL are mandatory input arguments.  
 ```  
 
-## 2) Creating Working Directories, and Job Files for the Forecast Month
+## 2) Creating E2ES Scratch (Run) Directories, and Job Files for the Forecast Month
 Run the following command to initialize the forecast environment:  
   
 ```python run_s2s_fcast.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL```  
