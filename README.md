@@ -123,6 +123,8 @@ Show status {WORKFLOW_NAME}: cylc show {WORKFLOW_NAME}
 Stop {WORKFLOW_NAME}: cylc stop --now {WORKFLOW_NAME}  
 Cat log: cylc cat-log {WORKFLOW_NAME}  
 ```
+### End-to-end S2S Flow Chart
+![End-to-end S2S Flow Chart](S2S_flowchart.PNG)
 
 ### b) In the SLURM System
   
