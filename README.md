@@ -7,7 +7,7 @@ A comprehensive description of GHI-S2S can be found at:
   
 The master script of ghis2s ([*s2s_run.py*](https://github.com/smahanam/LISF-1/blob/support/lisf_557ww_7.7_s2srf/lis/utils/usaf/S2S/ghis2s/s2s_app/s2s_run.py)) creates run-directories, establishes necessary links, generates bash script files, and sets up the complete S2S forecast experiment each month.
 
-We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The **ghis2s** package provides a Python script, [*run_s2s_fcast.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py) , for importing **ghis2s**, and installing **Cylc** workflow. Optionally, **run_s2s_fcast.py** can also execute monthly forecast runs in the SLURM system. Users are welcome to copy **[run_s2s_fcast.py](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/run_s2s_fcast.py)** from the LISF repository into their working directories and modify it as needed.  
+We present **ghis2s** as a Python package that can be called either from within an external Python program or run from the command line. The **ghis2s** package provides a Python script, [*ghis2s_program.py*](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/ghis2s_program.py) , for importing **ghis2s**, and installing **Cylc** workflow. Optionally, **ghis2s_program.py** can also execute monthly forecast runs in the SLURM system. Users are welcome to copy **[ghis2s_program.py](https://github.com/smahanam/LISF-1/blob/parallelizing/lis/utils/usaf/S2S/ghis2s/cylc_script/ghis2s_program.py)** from the LISF repository into their working directories and modify it as needed.  
 
 The package requires only one main input file: a YAML configuration file containing system and experiment-related parameters/paths. Example configuration:   
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/s2s_config_global_fcast*  
@@ -26,7 +26,7 @@ ii) Ensure the **hindcast** directory and the land initial conditions ("lis_daru
 ### b) Set up the Working directory and install the Cylc Workflow
 
 i) **Cylc** creates the /home/$USER/cylc-run directory during the monthly forecast installation. Therefore, /home/$USER/cylc-run  is *NOT* a recommended name for the user's working directory.  
-ii) Copy **run_s2s_fcast.py** to your working directory and edit *E2ESDIR* parameter to specify user's E2ESDIR.  
+ii) Copy **ghis2s_program.py** to your working directory and edit *E2ESDIR* parameter to specify user's E2ESDIR.  
 iii) Load the LISF Python module and set the ENVIRONMENT variable PYTHONPATH  
   
 ```
@@ -39,15 +39,15 @@ OR
 setenv PYTHONPATH {LISFDIR}/lis/utils/usaf/S2S/
 ```
 ### c) Test the Script
-The **run_s2s_fcast.py** script imports the **“S2Srun”** class from the **“s2s_run”** module in the **“ghis2s”** package, and instantiates as **s2s**.
+The **ghis2s_program.py** script imports the **“S2Srun”** class from the **“s2s_run”** module in the **“ghis2s”** package, and instantiates as **s2s**.
 The **s2s** instance has the following methods: s2s.main() [end-to-end 7-steps]; s2s.lis_darun(); s2s.ldt_ics(); s2s.bcsd(); s2s.lis_fcst(); s2s.s2spost(); s2s.s2smetric(); s2s.s2splots()
 s2s.write_cylc_snippet() [writes CYLC_workflow.rc in scratch/YYYYMM]; and s2s.submit_jobs()  [submits to the SLURM queue].
    
 To display options, run the help option:
-``` python run_s2s_fcast.py -h ```
+``` python ghis2s_program.py -h ```
 This will print:
 ```
-usage: run_s2s_fcast.py [-h] -c CONFIG_FILE -y YEAR -m MONTH -e EMAIL [-s STEP] [-o] [-j]
+usage: ghis2s_program.py [-h] -c CONFIG_FILE -y YEAR -m MONTH -e EMAIL [-s STEP] [-o] [-j]
 
 options:
   -h, --help            show this help message and exit
@@ -68,7 +68,7 @@ Note: CONFIG_FILE, YEAR, MONTH and EMAIL are mandatory input arguments.
 ## 2) Creating E2ES Scratch (Run) Directories, and Job Files for the Forecast Month
 Run the following command to initialize the forecast environment:  
   
-```python run_s2s_fcast.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL```  
+```python ghis2s_program.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL```  
 
 This command performs the following:
 
@@ -91,26 +91,26 @@ The two different job scripts that are created for each S2S task are:
 **(3) Cylc implementation:** This step will also generate the **CYLC_workflow.rc** file for **Cylc** implementation which defines directives, environmental variables, task dependencies, and the order of execution of job files. For example:  
 *https://github.com/smahanam/FileSharing/blob/main/E2ESDIR/scratch/202501/CYLC_workflow.rc*  
 
-### Optional Features for run_s2s_fcast.py:
+### Optional Features for ghis2s_program.py:
 **i) -s STEP**  
 The STEP option allows the user to resume the process from the last completed step of the seven E2ES steps.  
--s STEP directs **run_s2s_fcast.py** to start from a specific STEP (valid inputs: LISDA, LDTICS, BCSD, FCST, POST, METRICS or PLOTS).  
+-s STEP directs **ghis2s_program.py** to start from a specific STEP (valid inputs: LISDA, LDTICS, BCSD, FCST, POST, METRICS or PLOTS).  
 **ii) -s STEP -o**  
 *-o* flag used to run only the above -s STEP, the process will exit upon completion of above STEP.  
 **iii) -j** for SLURM submission  
 *-j* flag is used to submit jobs to the SLURM system.
 
-## 3) Running Monthly Forecasts using *run_s2s_fcast.py* 
+## 3) Running Monthly Forecasts using *ghis2s_program.py* 
 ### a) In a Cylc Environment  
   
 ```
-python run_s2s_fcast.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL
+python ghis2s_program.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL
 ```
 
 In addition to creating monthly forecast-specific directories, links, and files, the command above also customizes and installs **Cylc-related** files and directories for the specified forecast month.  
-**run_s2s_fcast.py** uses the WORKFLOW_NAME (e.g. **S2S-202501**) variable to name and organize these **Cylc-specific** resources, which include:  
+**ghis2s_program.py** uses the WORKFLOW_NAME (e.g. **S2S-202501**) variable to name and organize these **Cylc-specific** resources, which include:  
 
-i) A {WORKFLOW_NAME} directory under the user’s working directory (where run_s2s_fcast.py is executed).  
+i) A {WORKFLOW_NAME} directory under the user’s working directory (where ghis2s_program.py is executed).  
 ii) A customized **Cylc flow.cylc** file containing the user’s email address, placed inside the {WORKFLOW_NAME} directory.  
 iii) A **Cylc log/run** directory under the forecast month’s run directory (e.g., **scratch/202501**). Example:    
 *https://github.com/smahanam/FileSharing/tree/main/E2ESDIR/scratch/202501/cylc-run/S2S-202501/run1*
@@ -129,7 +129,7 @@ Cat log: cylc cat-log {WORKFLOW_NAME}
 ### b) In the SLURM System
   
 ```
-python run_s2s_fcast.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL -j
+python ghis2s_program.py -y 2025 -m 1 -c s2s_config_global_fcast -e USER_EMAIL -j
 ```  
 Optionally, this command will submit all generated job scripts (~50 \*.j files) to the SLURM system. The jobs will be executed according to their predefined workflow dependencies.  
 For example:  
@@ -137,13 +137,13 @@ For example:
 
 ## 4) Operational Notes and Cylc Design Rationale  
 
-**a) Why should ghis2s’s run_s2s_fcast.py be executed every month?**  
+**a) Why should ghis2s’s ghis2s_program.py be executed every month?**  
   
-Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **run_s2s_fcast.py**, must be executed monthly to install and configure the Cylc {WORKFLOW_NAME} accordingly.  
+Each month requires customized LIS input/configuration files, job script arguments, and month-specific symbolic links, all of which must be placed under scratch/YYYYMM.   Therefore, the script, **ghis2s_program.py**, must be executed monthly to install and configure the Cylc {WORKFLOW_NAME} accordingly.  
   
 **b) Can the same flow.cylc file be reused each month?**  
   
-No. As stated above, monthly differences in input files and configurations require that **run_s2s_fcast.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
+No. As stated above, monthly differences in input files and configurations require that **ghis2s_program.py** be executed each time. The **ghis2s** package programmatically generates the 800+ line flow.cylc file to minimize human error and improve efficiency.  
   
 **c) Why is [[dependencies]] → [[[R1]]] necessary?**  
   
